@@ -1175,3 +1175,11 @@ def test_check_interpolation_issues():
     ttFont = TTFont(TEST_FILE("notosansbamum/NotoSansBamum[wght].ttf"))
     assert_results_contain(check(ttFont),
                            WARN, 'interpolation-issues')
+
+
+def test_check_get_instance_axis_value():
+  """ Check that axis values are parsed correctly when calling
+      get_instance_axis_value(). """
+  ttfont = "cabinvfbeta/CabinVFBeta-regularcheck.ttf"
+  assert regular_wdth_coord(ttfont) is not None
+
