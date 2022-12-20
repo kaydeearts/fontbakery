@@ -389,7 +389,7 @@ def get_instance_axis_value(ttFont, instance_name, axis_tag):
     instance = None
     for i in ttFont["fvar"].instances:
         name = ttFont["name"].getDebugName(i.subfamilyNameID)
-        if name == instance_name:
+        if instance_name in name:
             instance = i
             break
 
