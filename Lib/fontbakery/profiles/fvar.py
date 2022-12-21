@@ -28,6 +28,10 @@ def com_google_fonts_check_varfont_regular_wght_coord(ttFont, regular_wght_coord
 
     if regular_wght_coord == 400:
         yield PASS, "Regular:wght is 400."
+    elif regular_wght_coord is None:
+        yield WARN, f"There appears to be no 'Regular' instance, or that " \
+                     "the 'Regular' instance is missing the 'wght' axis. " \
+                     "Consider adding this."
     else:
         yield FAIL,\
               Message("wght-not-400",
