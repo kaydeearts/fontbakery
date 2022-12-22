@@ -90,6 +90,10 @@ def com_google_fonts_check_varfont_regular_slnt_coord(ttFont, regular_slnt_coord
 
     if regular_slnt_coord == 0:
         yield PASS, "Regular:slnt is zero."
+    elif regular_slnt_coord is None:
+        yield WARN, f"There appears to be no 'Regular' instance, or that " \
+                     "the 'Regular' instance is missing the 'slnt' axis. " \
+                     "Consider adding this."
     else:
         yield FAIL,\
               Message("slnt-not-0",
