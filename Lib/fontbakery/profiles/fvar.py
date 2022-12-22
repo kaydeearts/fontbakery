@@ -153,6 +153,10 @@ def com_google_fonts_check_varfont_regular_opsz_coord(ttFont, regular_opsz_coord
 
     if regular_opsz_coord >= 10 and regular_opsz_coord <= 16:
         yield PASS, f"Regular:opsz coordinate ({regular_opsz_coord}) looks good."
+    elif regular_opsz_coord is None:
+        yield WARN, f"There appears to be no 'Regular' instance, or that " \
+                     "the 'Regular' instance is missing the 'opsz' axis. " \
+                     "Consider adding this."
     else:
         yield WARN,\
               Message("opsz-out-of-range",
