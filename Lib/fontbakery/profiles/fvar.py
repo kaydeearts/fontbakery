@@ -121,6 +121,10 @@ def com_google_fonts_check_varfont_regular_ital_coord(ttFont, regular_ital_coord
 
     if regular_ital_coord == 0:
         yield PASS, "Regular:ital is zero."
+    elif regular_ital_coord is None:
+        yield WARN, f"There appears to be no 'Regular' instance, or that " \
+                     "the 'Regular' instance is missing the 'ital' axis. " \
+                     "Consider adding this."
     else:
         yield FAIL,\
               Message("ital-not-0",
