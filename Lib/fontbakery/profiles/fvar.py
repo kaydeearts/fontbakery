@@ -26,13 +26,12 @@ def com_google_fonts_check_varfont_regular_wght_coord(ttFont, regular_wght_coord
     """The variable font 'wght' (Weight) axis coordinate must be 400 on the
     'Regular' instance."""
 
-    if regular_wght_coord == 400:
+    if regular_wght_coord is None:
+        yield FAIL, \
+              Message("no-regular-instance", 
+              '"Regular" instance not present.')
+    elif regular_wght_coord == 400:
         yield PASS, "Regular:wght is 400."
-    elif regular_wght_coord is None:
-        yield WARN, \
-              Message(f"There appears to be no 'Regular' instance, or that " \
-                     "the 'Regular' instance is missing the 'wght' axis. " \
-                     "Consider adding this.")
     else:
         yield FAIL,\
               Message("wght-not-400",
@@ -58,13 +57,12 @@ def com_google_fonts_check_varfont_regular_wght_coord(ttFont, regular_wght_coord
 def com_google_fonts_check_varfont_regular_wdth_coord(ttFont, regular_wdth_coord):
     """The variable font 'wdth' (Width) axis coordinate must be 100 on the 'Regular' instance."""
 
-    if regular_wdth_coord == 100:
+    if regular_wdth_coord is None:
+        yield FAIL, \
+              Message("no-regular-instance", 
+              '"Regular" instance not present.')
+    elif regular_wdth_coord == 100:
         yield PASS, "Regular:wdth is 100."
-    elif regular_wdth_coord is None:
-        yield WARN, \
-              Message(f"There appears to be no 'Regular' instance, or that " \
-                     "the 'Regular' instance is missing the 'wdth' axis. " \
-                     "Consider adding this.")
     else:
         yield FAIL,\
               Message("wdth-not-100",
@@ -90,13 +88,12 @@ def com_google_fonts_check_varfont_regular_wdth_coord(ttFont, regular_wdth_coord
 def com_google_fonts_check_varfont_regular_slnt_coord(ttFont, regular_slnt_coord):
     """The variable font 'slnt' (Slant) axis coordinate must be zero on the 'Regular' instance."""
 
-    if regular_slnt_coord == 0:
+    if regular_slnt_coord is None:
+        yield FAIL, \
+              Message("no-regular-instance", 
+              '"Regular" instance not present.')
+    elif regular_slnt_coord == 0:
         yield PASS, "Regular:slnt is zero."
-    elif regular_slnt_coord is None:
-        yield WARN, \
-              Message(f"There appears to be no 'Regular' instance, or that " \
-                     "the 'Regular' instance is missing the 'slnt' axis. " \
-                     "Consider adding this.")
     else:
         yield FAIL,\
               Message("slnt-not-0",
@@ -122,13 +119,12 @@ def com_google_fonts_check_varfont_regular_slnt_coord(ttFont, regular_slnt_coord
 def com_google_fonts_check_varfont_regular_ital_coord(ttFont, regular_ital_coord):
     """The variable font 'ital' (Italic) axis coordinate must be zero on the 'Regular' instance."""
 
-    if regular_ital_coord == 0:
+    if regular_ital_coord is None:
+        yield FAIL, \
+              Message("no-regular-instance", 
+              '"Regular" instance not present.')
+    elif regular_ital_coord == 0:
         yield PASS, "Regular:ital is zero."
-    elif regular_ital_coord is None:
-        yield WARN, \
-              Message(f"There appears to be no 'Regular' instance, or that " \
-                     "the 'Regular' instance is missing the 'ital' axis. " \
-                     "Consider adding this.")
     else:
         yield FAIL,\
               Message("ital-not-0",
@@ -155,13 +151,12 @@ def com_google_fonts_check_varfont_regular_ital_coord(ttFont, regular_ital_coord
 def com_google_fonts_check_varfont_regular_opsz_coord(ttFont, regular_opsz_coord):
     """The variable font 'opsz' (Optical Size) axis coordinate should be between 10 and 16 on the 'Regular' instance."""
 
-    if regular_opsz_coord >= 10 and regular_opsz_coord <= 16:
+    if regular_opsz_coord is None:
+        yield FAIL, \
+              Message("no-regular-instance", 
+              '"Regular" instance not present.')
+    elif regular_opsz_coord >= 10 and regular_opsz_coord <= 16:
         yield PASS, f"Regular:opsz coordinate ({regular_opsz_coord}) looks good."
-    elif regular_opsz_coord is None:
-        yield WARN, \
-              Message(f"There appears to be no 'Regular' instance, or that " \
-                     "the 'Regular' instance is missing the 'opsz' axis. " \
-                     "Consider adding this.")
     else:
         yield WARN,\
               Message("opsz-out-of-range",
