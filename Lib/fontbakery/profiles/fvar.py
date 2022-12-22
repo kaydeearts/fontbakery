@@ -59,6 +59,10 @@ def com_google_fonts_check_varfont_regular_wdth_coord(ttFont, regular_wdth_coord
 
     if regular_wdth_coord == 100:
         yield PASS, "Regular:wdth is 100."
+    elif regular_wdth_coord is None:
+        yield WARN, f"There appears to be no 'Regular' instance, or that " \
+                     "the 'Regular' instance is missing the 'wdth' axis. " \
+                     "Consider adding this."
     else:
         yield FAIL,\
               Message("wdth-not-100",
