@@ -722,7 +722,18 @@ def com_adobe_fonts_check_consistent_font_family_name(ttFonts):
                 WindowsEncodingID.UNICODE_BMP,
                 WindowsLanguageID.ENGLISH_USA,
             )
-        name_dict[frozenset(names_list)].append((filename, nameID))
+
+        if len(name_dict) == 0:
+          name_dict[frozenset(names_list)].append((filename, nameID))
+        else:
+          current_keys = list(name_dict.keys())
+          for name in names_list:
+            name_first = name.partition(' ')[0]
+            for key in current_keys:
+                key_first = next(iter(key)).partition(' ')[0]
+                if key_first != name_first:
+                    name_dict[frozenset(names_list)].append((filename, nameID))
+
 
     if len(name_dict) > 1:
         detail_str_arr = []
