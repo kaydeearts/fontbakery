@@ -555,6 +555,14 @@ def test_check_consistent_font_family_name():
     # try fonts with consistent family names
     assert_PASS(check(test_fonts))
 
+    # change the subfamily name but not the main family name
+    name_records = test_fonts[1]["name"].names
+    subfamily_name = f"Source Sans Subfamily"
+    for name_record in name_records:
+        name_record.string = subfamily_name.encode("utf-16be")
+
+    assert_PASS(check(test_fonts))
+
     # now set 5 of the fonts to have different family names
     for i in range(1, 6):
         if i in [1, 2, 3]:
